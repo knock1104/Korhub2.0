@@ -8,7 +8,7 @@ from audio_recorder_streamlit import audio_recorder
 
 st.title("Korhub 음성분석기 입니다.")
 
-service = ['모음분석', '자음분석']
+service = ['종합분석', '모음분석', '자음분석', '문장분석']
 
 selected_service = st.selectbox('원하시는 서비스를 선택해주세요.', service)
 
@@ -150,8 +150,6 @@ if vowel:
 
     st.subheader('실시간 음성 녹음')
 
-# if st.button('Start Recording'):
-    # 오디오 녹음
     audio_bytes = audio_recorder()
     
     if audio_bytes:
@@ -188,27 +186,15 @@ if vowel:
             plt.figure(figsize=(10, 6))
             plt.plot(times, f1_values, 'r-', label='F1')
             plt.plot(times, f2_values, 'g-', label='F2')
-            plt.plot(f3_values, 'b-', label='F3')
+            plt.plot(times, f3_values, 'b-', label='F3')
             plt.xlabel('Time (s)')
             plt.ylabel('Frequency (Hz)')
             plt.legend()
             plt.title(f'Formant Frequencies for Vowel "{vowel}"')
             st.pyplot(plt)
         
-        # 가이드 파형
-        # st.write("가이드 음성파형")    
-        # x, fs = librosa.load(audio_file_path, sr=None)
-        # y = librosa.stft(x, n_fft=128, hop_length=64, win_length=128)
-
+        # 가이드 이미지
         st.image(image_file_url, caption=f"Spectrogram for Vowel '{vowel}'", use_column_width=True)
-
-
-        magnitude = np.abs(y)
-        log_spectrogram = librosa.amplitude_to_db(magnitude)
-
-        plt.figure(figsize=(10, 4))
-        librosa.display.specshow(log_spectrogram, sr=fs, hop_length=64)
-        st.pyplot(plt)
 
         # 학습자 파형
         st.write("학습자 음성파형")    
