@@ -183,6 +183,9 @@ if vowel:
             f2_values = [f2 for _, _, f2, _ in filtered_formants]
             f3_values = [f3 for _, _, _, f3 in filtered_formants]
 
+            # Add a Korean font
+            plt.rcParams['font.family'] = 'NanumGothic'
+
             plt.rcParams.update(plt.rcParamsDefault)
             plt.figure(figsize=(10, 6))
             plt.plot(times, f1_values, 'r-', label='F1')
