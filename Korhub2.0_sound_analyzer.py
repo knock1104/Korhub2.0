@@ -184,6 +184,7 @@ if vowel:
             f3_values = [f3 for _, _, _, f3 in filtered_formants]
 
             # Add a Korean font
+            st.write('학습자 음성 파형')
             plt.rcParams['font.family'] = 'NanumGothic'
 
             plt.rcParams.update(plt.rcParamsDefault)
@@ -194,10 +195,11 @@ if vowel:
             plt.xlabel('Time (s)')
             plt.ylabel('Frequency (Hz)')
             plt.legend()
-            plt.title(f'학습자 음성파형 "{vowel}"')
+            # plt.title(f'학습자 음성파형 "{vowel}"')
             st.pyplot(plt)
         
         # 가이드 이미지
+        st.write("가이드 음성 파형")
         st.image(image_file_url, use_column_width=True)
 
         # 학습자 파형
