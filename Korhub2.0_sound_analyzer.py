@@ -149,7 +149,7 @@ if vowel:
     st.audio(audio_file_path, format='audio/wav')
 
     st.subheader('실시간 음성 녹음')
-    st.subheader('클릭시 바로 녹음시 시작되며, 3초 후 자동으로 종료됩니다.')
+    st.write('클릭시 바로 녹음이 시작되며, 3초 후 자동으로 종료됩니다.')
 
     audio_bytes = audio_recorder()
     
