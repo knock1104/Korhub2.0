@@ -151,7 +151,10 @@ if vowel:
     st.subheader('실시간 음성 녹음')
     st.write('클릭시 바로 녹음이 시작되며, 3초 후 자동으로 종료됩니다.')
 
-    audio_bytes = audio_recorder()
+    audio_bytes = audio_recorder(
+        energy_threshold=(-1.0, 1.0),
+        pause_threshold=2.0
+    )
     
     if audio_bytes:
         # 임시 파일에 저장
