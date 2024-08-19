@@ -8,14 +8,14 @@ from audio_recorder_streamlit import audio_recorder
 
 st.title("Korhub 음성분석기 입니다.")
 
-service = ['종합분석', '모음분석', '자음분석', '문장분석']
+service = ['모음분석', '자음분석']
 
 selected_service = st.selectbox('원하시는 서비스를 선택해주세요.', service)
 
-if selected_service == '자유음성분석':
-    st.write('자유음성분석 서비스를 선택하셨습니다. 기본정보를 기입해주세요.')
-elif selected_service == '모음분석':
-    st.write('모음분석 서비스를 선택하셨습니다. 기본 정보를 기입해주세요.')
+if selected_service == '모음분석':
+    st.write('모음분석 서비스를 선택하셨습니다. 기본정보를 기입해주세요.')
+elif selected_service == '자음분석':
+    st.write('자음분석 서비스를 선택하셨습니다. 기본 정보를 기입해주세요.')
 
 # 음성분석을 위한 개인정보 수집
 st.title('음성 분석을 위한 기본정보 입력')
@@ -181,8 +181,8 @@ if vowel:
             f1_values = [f1 for _, f1, _, _ in filtered_formants]
             f2_values = [f2 for _, _, f2, _ in filtered_formants]
             f3_values = [f3 for _, _, _, f3 in filtered_formants]
-            
-            plt.rcParams['font.family'] = 'AppleGothic'
+
+            plt.rcParams.update(plt.rcParamsDefault)
             plt.figure(figsize=(10, 6))
             plt.plot(times, f1_values, 'r-', label='F1')
             plt.plot(times, f2_values, 'g-', label='F2')
