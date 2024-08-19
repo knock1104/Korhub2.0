@@ -184,7 +184,7 @@ if vowel:
             f3_values = [f3 for _, _, _, f3 in filtered_formants]
 
             # Add a Korean font
-            st.write('학습자 음성 파형')
+            st.write('학습자 음성 그래프')
             plt.rcParams['font.family'] = 'NanumGothic'
 
             plt.rcParams.update(plt.rcParamsDefault)
