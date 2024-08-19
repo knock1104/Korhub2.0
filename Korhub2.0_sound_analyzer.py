@@ -140,10 +140,9 @@ if vowel:
     
     # 성별에 따른 가이드 음성 경로 설정
     if gender == '남':
-        audio_file_path = f'/Users/hyunsupark/Desktop/Metacom/Data/audio_file/test용 음성/남성/{vowel}.wav'
+        audio_file_path = f'https://raw.githubusercontent.com/yourusername/yourrepo/main/Korhub_analyzer/남성/{vowel}.wav'
     else:
-        audio_file_path = f'/Users/hyunsupark/Desktop/Metacom/Data/audio_file/test용 음성/여성/{vowel}.wav'
-    
+        audio_file_path = f'https://raw.githubusercontent.com/yourusername/yourrepo/main/Korhub_analyzer/여성/{vowel}.wav'
     # 가이드 음성 재생
     st.audio(audio_file_path, format='audio/wav')
 
