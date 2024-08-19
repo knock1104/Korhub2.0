@@ -190,7 +190,7 @@ if vowel:
             plt.xlabel('Time (s)')
             plt.ylabel('Frequency (Hz)')
             plt.legend()
-            plt.title(f'Formant Frequencies for Vowel "{vowel}"')
+            plt.title(f'학습자 음성파형 "{vowel}"')
             st.pyplot(plt)
         
         # 가이드 이미지
