@@ -200,11 +200,8 @@ if vowel:
         # x, fs = librosa.load(audio_file_path, sr=None)
         # y = librosa.stft(x, n_fft=128, hop_length=64, win_length=128)
 
-        image_response = requests.get(image_file_url)
-        if image_response.status_code == 200:
-            st.image(image_file_url, caption=f"Spectrogram for Vowel '{vowel}'", use_column_width=True)
-        else:
-            st.error("Failed to load the image.")
+        st.image(image_file_url, caption=f"Spectrogram for Vowel '{vowel}'", use_column_width=True)
+
 
         magnitude = np.abs(y)
         log_spectrogram = librosa.amplitude_to_db(magnitude)
