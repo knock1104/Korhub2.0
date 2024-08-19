@@ -196,9 +196,15 @@ if vowel:
             st.pyplot(plt)
         
         # 가이드 파형
-        st.write("가이드 음성파형")    
-        x, fs = librosa.load(audio_file_path, sr=None)
-        y = librosa.stft(x, n_fft=128, hop_length=64, win_length=128)
+        # st.write("가이드 음성파형")    
+        # x, fs = librosa.load(audio_file_path, sr=None)
+        # y = librosa.stft(x, n_fft=128, hop_length=64, win_length=128)
+
+        image_response = requests.get(image_file_url)
+            if image_response.status_code == 200:
+                st.image(image_file_url, caption=f"Spectrogram for Vowel '{vowel}'", use_column_width=True)
+            else:
+                st.error("Failed to load the image.")
 
         magnitude = np.abs(y)
         log_spectrogram = librosa.amplitude_to_db(magnitude)
