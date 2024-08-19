@@ -8,7 +8,7 @@ from audio_recorder_streamlit import audio_recorder
 
 st.title("Korhub 음성분석기 입니다.")
 
-service = ['종합분석', '모음분석', '자음분석', '문장분석']
+service = ['모음분석', '자음분석']
 
 selected_service = st.selectbox('원하시는 서비스를 선택해주세요.', service)
 
