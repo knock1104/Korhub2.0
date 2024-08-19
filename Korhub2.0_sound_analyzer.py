@@ -133,7 +133,7 @@ st.title('실시간 발음정확도 분석')
 duration = 3  # seconds
 
 # 모음 선택 UI
-vowel = st.selectbox("Select the vowel to analyze", list(formant_ranges_KOR_man.keys()))
+vowel = st.selectbox("분석할 모음을 선택하세요.", list(formant_ranges_KOR_man.keys()))
 
 if vowel:
     st.subheader(f"가이드 음성: '{vowel}'")
@@ -149,6 +149,7 @@ if vowel:
     st.audio(audio_file_path, format='audio/wav')
 
     st.subheader('실시간 음성 녹음')
+    st.subheader('클릭시 바로 녹음시 시작되며, 3초 후 자동으로 종료됩니다.')
 
     audio_bytes = audio_recorder()
     
