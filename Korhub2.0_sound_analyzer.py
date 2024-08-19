@@ -194,7 +194,7 @@ if vowel:
             st.pyplot(plt)
         
         # 가이드 이미지
-        st.image(image_file_url, caption=f"Spectrogram for Vowel '{vowel}'", use_column_width=True)
+        st.image(image_file_url, use_column_width=True)
 
         # 학습자 파형
         st.write("학습자 음성파형")    
