@@ -152,6 +152,7 @@ if vowel:
     st.write('클릭시 바로 녹음이 시작되며, 2초 후 자동으로 종료됩니다.')
 
     audio_bytes = audio_recorder(
+        energy_threshold=(-1.0, 1.0),
         pause_threshold=1.5,
         sample_rate = 11025
     )
