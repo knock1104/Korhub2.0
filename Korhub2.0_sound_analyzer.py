@@ -113,16 +113,66 @@ def filter_formants_by_vowel(formant_values, vowel):
     return filtered_formants
 
 # 포먼트 계산
+# 포먼트 계산
 def calculate_average_formants(filtered_formants):
     if not filtered_formants:
         return None, None, None
+    
+    # f1, f2, f3 값을 추출
     f1_values = [f1 for _, f1, _, _ in filtered_formants]
     f2_values = [f2 for _, _, f2, _ in filtered_formants]
     f3_values = [f3 for _, _, _, f3 in filtered_formants]
     
-    avg_f1 = np.mean(f1_values)
-    avg_f2 = np.mean(f2_values)
-    avg_f3 = np.mean(f3_values)
+    # f1 최대값 및 인덱스 탐지
+    max_f1 = np.max(f1_values)
+    max_f1_index = f1_values.index(max_f1)
+    
+    # f2 최대값 및 인덱스 탐지
+    max_f2 = np.max(f2_values)
+    max_f2_index = f2_values.index(max_f2)
+    
+    # f3 최대값 및 인덱스 탐지
+    max_f3 = np.max(f3_values)
+    max_f3_index = f3_values.index(max_f3)
+    
+    # f1 이전과 이후 값 계산
+    if max_f1_index > 0:
+        f1_before = f1_values[max_f1_index - 1]
+    else:
+        f1_before = max_f1
+        
+    if max_f1_index < len(f1_values) - 1:
+        f1_after = f1_values[max_f1_index + 1]
+    else:
+        f1_after = max_f1
+        
+    avg_f1 = np.mean([f1_before, max_f1, f1_after])
+    
+    # f2 이전과 이후 값 계산
+    if max_f2_index > 0:
+        f2_before = f2_values[max_f2_index - 1]
+    else:
+        f2_before = max_f2
+        
+    if max_f2_index < len(f2_values) - 1:
+        f2_after = f2_values[max_f2_index + 1]
+    else:
+        f2_after = max_f2
+        
+    avg_f2 = np.mean([f2_before, max_f2, f2_after])
+    
+    # f3 이전과 이후 값 계산
+    if max_f3_index > 0:
+        f3_before = f3_values[max_f3_index - 1]
+    else:
+        f3_before = max_f3
+        
+    if max_f3_index < len(f3_values) - 1:
+        f3_after = f3_values[max_f3_index + 1]
+    else:
+        f3_after = max_f3
+        
+    avg_f3 = np.mean([f3_before, max_f3, f3_after])
     
     return avg_f1, avg_f2, avg_f3
 
