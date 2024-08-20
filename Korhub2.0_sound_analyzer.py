@@ -130,7 +130,7 @@ def calculate_average_formants(filtered_formants):
 st.title('실시간 발음정확도 분석')
 
 # 녹음 시간 설정
-duration = 3  # seconds
+duration = 2  # seconds
 
 # 모음 선택 UI
 vowel = st.selectbox("분석할 모음을 선택하세요.", list(formant_ranges_KOR_man.keys()))
@@ -149,11 +149,12 @@ if vowel:
     st.audio(audio_file_path, format='audio/wav')
 
     st.subheader('실시간 음성 녹음')
-    st.write('클릭시 바로 녹음이 시작되며, 3초 후 자동으로 종료됩니다.')
+    st.write('클릭시 바로 녹음이 시작되며, 2초 후 자동으로 종료됩니다.')
 
     audio_bytes = audio_recorder(
-        energy_threshold=(-1.0, 1.0),
-        pause_threshold=2.0
+        energy_threshold=(0, 1.0),
+        pause_threshold=1.5,
+        sample_rate = 11025
     )
     
     if audio_bytes:
